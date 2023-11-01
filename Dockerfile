@@ -1,22 +1,19 @@
-# Use an official lightweight Node.js runtime as the base image
-FROM node:14-slim
+# Use an official web server image as the base image.
+# For example, you can use Nginx or Apache as the web server.
+# You can replace "nginx" with the appropriate image for your needs.
+FROM nginx:latest
 
-# Create a working directory in the container
-WORKDIR /app
+# Copy your HTML and JavaScript files into the container.
+COPY index.html /usr/share/nginx/html/
+COPY app.js /usr/share/nginx/html/
 
-# Copy the HTML and JavaScript files into the container
-COPY index.html /app/
-COPY app.js /app/
+# Optionally, you can also copy any additional assets, stylesheets, or images.
+# COPY assets/ /usr/share/nginx/html/assets/
+# COPY styles.css /usr/share/nginx/html/
+# COPY image.jpg /usr/share/nginx/html/
 
-# Expose a port if you plan to run a web server in your app
-#EXPOSE 8080
+# Expose the port that the web server will listen on.
+EXPOSE 80
 
-# Command to run your web server or static file server (e.g., for Node.js)
-# CMD [ "node", "app.js" ]
-
-# For a static file server using Python (uncomment and use this if you prefer)
-CMD [ "python", "-m", "http.server", "8080"]
-
-# For a basic web server, you can use something like Python's SimpleHTTPServer
-# CMD [ "python", "-m", "SimpleHTTPServer", "8080"]
-
+# Start the web server when the container runs.
+CMD ["nginx", "-g", "daemon off;"]
