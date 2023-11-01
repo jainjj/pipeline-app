@@ -3,7 +3,7 @@ const imageElement = document.getElementById('display-image');
 const imageContainer = document.getElementById('image-container');
 
 // Replace the following URL with the actual image URL you want to display.
-const imageUrl = '/usr/share/hack-week.png';
+const imageUrl = 'hack-week.png';
 
 // Set the image source to the specified URL.
 imageElement.src = imageUrl;
