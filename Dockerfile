@@ -1,7 +1,7 @@
 # Use an official web server image as the base image.
 # For example, you can use Nginx or Apache as the web server.
 # You can replace "nginx" with the appropriate image for your needs.
-FROM nginx:latest
+FROM nginx:1.24
 
 # Copy your HTML and JavaScript files into the container.
 COPY index.html /usr/share/nginx/html/
